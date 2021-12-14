@@ -10,10 +10,9 @@
       </div>
       <div :class='["mgi_form-div"]'>
         <label :class='["mgi_form-title"]'>Sex:</label>
-        <p v-for="item in sex">
-        <span v-if="item.isActive = initData.sex">{{ item.name }}</span>
-        <span v-else>{{ item.name }}</span>
-        </p>
+        <span v-for="item in sex">
+        <span v-if="item.isActive === initData.sex">{{ item.name }}</span>
+        </span>
       </div>
       <div :class='["mgi_form-div"]'>
         <label :class='["mgi_form-title"]'>Age:</label>

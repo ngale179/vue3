@@ -10,11 +10,10 @@
     </div>
     <div :class='["mgi_form-div"]'>
       <label :class='["mgi_form-title"]'>Sex:</label>
-      <select v-model="chooseSex">
-        <template v-for="item in sex">
-          <option v-if="item.isActive === initData.sex">{{ item.name }}</option>
-          <option v-else>{{ item.name }}</option>
-        </template>
+      <select>
+        <option v-for="(item , index) in sex" v-bind:key="index" :selected="item.isActive == initData.sex" >
+          {{item.name}}
+        </option>
       </select>
     </div>
     <div :class='["mgi_form-div"]'>
