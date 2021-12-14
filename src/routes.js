@@ -15,24 +15,7 @@ const routes = [
     {
         path: "/user",
         name: "user",
-        component: User,
-        children: [
-            {
-                path: "detail",
-                name: "detail",
-                component: () => import('./components/users/detail.vue')
-            },
-            {
-                path: "edit",
-                name: "edit",
-                component: () => import('./components/users/edit.vue')
-            },
-            {
-                path: "delete",
-                name: "delete",
-                component: () => import('./components/users/delete.vue')
-            }
-        ]
+        component: User
     },
 ];
 

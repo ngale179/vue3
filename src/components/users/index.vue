@@ -20,7 +20,7 @@
       <td :class="['mgi_center']">{{ item.address }}</td>
       <td :class="['mgi_center']">
         <button :class="['mgi_btn']" :title="'Edit'" @click="editUser(item)"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button :class="['mgi_btn']" :title="'Delete'" @click="showModalDelete = true"><i class="fa-solid fa-trash"></i></button>
+        <button :class="['mgi_btn']" :title="'Delete'" @click="deleteUser(item)"><i class="fa-solid fa-trash"></i></button>
       </td>
     </tr>
     </tbody>
@@ -54,22 +54,12 @@
       :title="'Delete User'"
       :message="'Are you sure you want to delete?'"
   >
+    <Delete v-if="showModalDelete" :initData="initData"/>
   </va-modal>
 </template>
 <script>
 import Detail from './detail.vue';
 import Edit from './edit.vue';
-const showModalDetail = false;
-const showModalDelete = false;
-const showModalEdit = false;
-var initData = {
-  id: '',
-  last_name: '',
-  first_name: '',
-  sex: 0,
-  age: 0,
-  address: ''
-};
 export default {
   data() {
     return {
@@ -85,10 +75,17 @@ export default {
         {"id": "9", "last_name": "Jone 9", "first_name": "Alex", "sex": 0, "age": 74, "address": "Chicago"},
         {"id": "10", "last_name": "Jone 10", "first_name": "Alex", "sex": 1, "age": 89, "address": "Chicago"}
       ],
-      showModalDetail,
-      showModalDelete,
-      showModalEdit,
-      initData
+      showModalDetail : false,
+      showModalDelete : false,
+      showModalEdit : false,
+      initData: {
+        id: '',
+        last_name: '',
+        first_name: '',
+        sex: 0,
+        age: 0,
+        address: ''
+      }
     }
   },
   methods: {
@@ -101,16 +98,21 @@ export default {
       this.showModalEdit = true;
     },
     deleteUser(item){
-      if(confirm()){
-        console.log("Delete");
-      } else {
-        console.log("Cancel");
-      }
+      this.initData = item;
+      this.showModalDelete = true;
     }
   },
   components:{
     Detail,
-    Edit
+    Edit,
+    Delete:{
+      props: {
+        initData: {
+          type: Object
+        }
+      },
+      template: `<h1>{{ initData.first_name }} {{ initData.last_name }}</h1>`
+    }
   }
 }
 </script>
