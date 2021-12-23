@@ -10,17 +10,17 @@
     </thead>
     <tbody>
     <tr v-for="item in listsUser" :key="item.id">
-<!--      <td :class="['mgi_center']"><router-link :to="'/user/detail/' + item.id">{{ item.last_name }} {{ item.first_name }}</router-link></td>-->
-      <td :class="['mgi_center']">
-        <a href="javacript:void(0);" @click="detailUser(item)" :title="'View detail'">{{ item.last_name }} {{ item.first_name }}</a>
+<!--      <td class="mgi_center"><router-link :to="'/user/detail/' + item.id">{{ item.last_name }} {{ item.first_name }}</router-link></td>-->
+      <td class="mgi_center">
+        <a href="javacript:void(0);" @click="detailUser(item)" title="View detail">{{ item.last_name }} {{ item.first_name }}</a>
       </td>
-      <td :class="['mgi_center']" v-if="item.sex === 1">Male</td>
-      <td :class="['mgi_center']" v-else>Female</td>
-      <td :class="['mgi_center']">{{ item.age }}</td>
-      <td :class="['mgi_center']">{{ item.address }}</td>
-      <td :class="['mgi_center']">
-        <button :class="['mgi_btn']" :title="'Edit'" @click="editUser(item)"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button :class="['mgi_btn']" :title="'Delete'" @click="deleteUser(item)"><i class="fa-solid fa-trash"></i></button>
+      <td class="mgi_center" v-if="item.sex === 1">Male</td>
+      <td class="mgi_center" v-else>Female</td>
+      <td class="mgi_center">{{ item.age }}</td>
+      <td class="mgi_center">{{ item.address }}</td>
+      <td class="mgi_center">
+        <button class="mgi_btn" title="Edit" @click="editUser(item)"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="mgi_btn" title="Delete" @click="deleteUser(item)"><i class="fa-solid fa-trash"></i></button>
       </td>
     </tr>
     </tbody>
@@ -30,7 +30,7 @@
   <va-modal
       v-model="showModalDetail"
       size="large"
-      :title="'Detail User'"
+      title="Detail User"
       :okText="Oke"
       :id="initData.id"
   >
@@ -40,7 +40,7 @@
   <va-modal
       v-model="showModalEdit"
       size="large"
-      :title="'Edit User'"
+      title="Edit User"
       :okText="Save"
       :cancelText="Cancel"
   >
@@ -51,8 +51,8 @@
   <va-modal
       v-model="showModalDelete"
       size="large"
-      :title="'Delete User'"
-      :message="'Are you sure you want to delete?'"
+      title="Delete User"
+      :message="'Are you sure you want to delete?"
   >
     <Delete v-if="showModalDelete" :initData="initData"/>
   </va-modal>
